@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="Tienda e inventario de Anézky Sports Wear.">
+  <title>Anézky Sports Wear | Tienda e inventario</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Anézky Sports Wear, inicio">
+      <span class="brand-mark">A</span>
+      <span>ANÉZKY <small>SPORTS WEAR</small></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#tienda">Tienda</a>
+      <a href="#inventario">Inventario</a>
+      <a href="#movimientos">Ventas y gastos</a>
+      <a href="#ganancias">Ganancias</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> RENDIMIENTO PARA CADA DÍA</p>
+        <h1>Entrena con<br><em>actitud.</em></h1>
+        <p class="hero-text">Equípate para moverte. Encuentra tu próximo favorito y lleva el control de tu negocio desde un solo lugar.</p>
+        <a class="button button-light" href="#tienda">Explorar productos <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-ball">A<span>+</span></div>
+        <div class="hero-caption">MOVE<br>YOUR WAY</div>
+        <div class="hero-number">01</div>
+      </div>
+      <div class="hero-bottom"><span>ANÉZKY SPORTS WEAR</span><span>EST. PARA EL MOVIMIENTO</span></div>
+    </section>
+
+    <section class="section-wrap" id="tienda">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SELECCIÓN ANÉZKY</p>
+          <h2>Tu próximo <em>movimiento.</em></h2>
+        </div>
+        <a class="text-link" href="#inventario">Gestionar inventario ↗</a>
+      </div>
+
+      <div class="filters">
+        <label class="search">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Buscar producto..." aria-label="Buscar producto">
+        </label>
+        <label class="select-wrap">
+          <span class="sr-only">Filtrar categoría</span>
+          <select id="category">
+            <option value="all">Todas las categorías</option>
+            <option value="running">Running</option>
+            <option value="training">Entrenamiento</option>
+            <option value="football">Fútbol</option>
+            <option value="accessories">Accesorios</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+      <p class="empty-state" id="empty-state" hidden>No encontramos productos. Prueba otra búsqueda.</p>
+    </section>
+
+    <section class="section-wrap inventory-section" id="inventario">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PANEL DE CONTROL</p>
+          <h2>Inventario <em>actual.</em></h2>
+        </div>
+        <button class="button button-dark" id="add-product" type="button">＋ Añadir producto</button>
+      </div>
+
+      <div class="stats">
+        <div><strong id="product-count">0</strong><span>PRODUCTOS</span></div>
+        <div><strong id="stock-count">0</strong><span>UNIDADES EN STOCK</span></div>
+        <p>Busca, añade, edita o elimina productos.</p>
+      </div>
+
+      <div class="inventory-list" id="inventory-list"></div>
+    </section>
+
+    <section class="section-wrap finance-section" id="movimientos">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CONTROL DEL NEGOCIO</p>
+          <h2>Ventas y <em>gastos.</em></h2>
+        </div>
+        <button class="button button-dark" id="add-expense" type="button">＋ Registrar gasto</button>
+      </div>
+
+      <div class="finance-summary">
+        <article class="finance-card">
+          <span>VENTAS REGISTRADAS</span>
+          <strong id="sales-total">$0.00</strong>
+          <button class="outline-button" id="add-sale" type="button">＋ Registrar venta</button>
+        </article>
+
+        <article class="finance-card expense-card">
+          <span>GASTOS</span>
+          <strong id="expenses-total">$0.00</strong>
+          <a class="outline-button" href="#gastos-lista">Ver gastos ↓</a>
+        </article>
+      </div>
+
+      <div class="movement-columns">
+        <div class="movement-panel">
+          <div class="panel-title">
+            <h3>Ventas</h3>
+            <span id="sales-count">0 registros</span>
+          </div>
+          <div id="sales-list" class="movement-list"></div>
+        </div>
+
+        <div class="movement-panel" id="gastos-lista">
+          <div class="panel-title">
+            <h3>Gastos</h3>
+            <span id="expenses-count">0 registros</span>
+          </div>
+          <div id="expenses-list" class="movement-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profit-section" id="ganancias">
+      <div class="profit-copy">
+        <p class="eyebrow">RESUMEN FINANCIERO</p>
+        <h2>Tus números,<br><em>claros.</em></h2>
+        <p>Consulta tus ganancias netas: ventas registradas menos gastos registrados.</p>
+      </div>
+
+      <div class="profit-card">
+        <span>GANANCIA NETA</span>
+        <strong id="profit-total">$0.00</strong>
+        <div>
+          <span>Ventas</span>
+          <b id="profit-sales">$0.00</b>
+        </div>
+        <div class="profit-expense-row">
+          <span>Gastos</span>
+          <b id="profit-expenses">−$0.00</b>
+        </div>
+        <a class="button button-light" href="#movimientos">Gestionar movimientos <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="callout">
+      <p>EL LÍMITE ESTÁ <em>EN TU MENTE.</em></p>
+      <span>ANÉZKY SPORTS WEAR · MUÉVETE A TU MANERA</span>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#inicio">
+      <span class="brand-mark">A</span>
+      <span>ANÉZKY <small>SPORTS WEAR</small></span>
+    </a>
+    <p>Diseñado para quienes siempre van por más.</p>
+    <a href="#inicio">VOLVER ARRIBA ↑</a>
+  </footer>
+
+  <dialog id="product-dialog">
+    <form id="product-form" method="dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">GESTIONA TU CATÁLOGO</p>
+          <h2 id="dialog-title">Añadir producto</h2>
+        </div>
+        <button class="close-button" type="button" data-close aria-label="Cerrar">×</button>
+      </div>
+
+      <input type="hidden" id="product-id">
+
+      <label>Nombre del producto
+        <input id="name" required maxlength="60" placeholder="Ej. Camiseta de entrenamiento">
+      </label>
+
+      <div class="form-row">
+        <label>Categoría
+          <select id="product-category">
+            <option value="running">Running</option>
+            <option value="training">Entrenamiento</option>
+            <option value="football">Fútbol</option>
+            <option value="accessories">Accesorios</option>
+          </select>
+        </label>
+
+        <label>Precio
+          <input id="price" type="number" min="0" step="0.01" required placeholder="0.00">
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>Unidades en stock
+          <input id="stock" type="number" min="0" step="1" required placeholder="0">
+        </label>
+
+        <label>Emoji (opcional)
+          <input id="emoji" maxlength="4" placeholder="👟">
+        </label>
+      </div>
+
+      <button class="button button-dark submit-button" type="submit">Guardar producto <span aria-hidden="true">→</span></button>
+    </form>
+  </dialog>
+
+  <dialog id="movement-dialog">
+    <form id="movement-form">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow" id="movement-eyebrow">REGISTRO</p>
+          <h2 id="movement-title">Registrar movimiento</h2>
+        </div>
+        <button class="close-button" type="button" data-close aria-label="Cerrar">×</button>
+      </div>
+
+      <input type="hidden" id="movement-type">
+
+      <label>Descripción
+        <input id="movement-description" required maxlength="80" placeholder="Ej. Venta de camiseta">
+      </label>
+
+      <label>Importe
+        <input id="movement-amount" type="number" min="0.01" step="0.01" required placeholder="0.00">
+      </label>
+
+      <label>Fecha
+        <input id="movement-date" type="date" required>
+      </label>
+
+      <button class="button button-dark submit-button" type="submit">Guardar registro <span aria-hidden="true">→</span></button>
+    </form>
+  </dialog>
+</body>
+</html>
